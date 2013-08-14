@@ -1,0 +1,21 @@
+<% content_for :title do %>
+	Display all products
+<% end %>
+<h1>Display All Products</h1>
+
+<table class="table">
+	<thead>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Pricing</th>
+	</thead>
+	<tbody>
+<%= @products.each do |product| %>
+	<tr>
+		<td><%= product.name %></td>		
+		<td><%= product.description %></td>
+		<td><%= product.pricing %></td>
+	</tr>
+<% end %>
+	</tbody>
+</table>

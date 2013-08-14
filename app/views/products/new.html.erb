@@ -1,0 +1,19 @@
+<% content_for :title do %>
+	Add New Product
+<% end %>
+<h1>Add New Product</h1>
+<% if flash[:error_messages] %>
+	<% flash[:error_messages].each do |error| %>
+		<p><%= error %></p>
+	<% end %>
+<% end %>
+<form action="/products" method="post">
+	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <label for="name">Name</label>
+  <input type="text" id="name" name="product[name]" placeholder="Name" />
+  <label for="description">Description</label>
+  <input type="text" id="description" name="product[description]" placeholder="Description" />
+  <label for="pricing">Pricing</label>
+  <input type="text" id="pricing" name="product[pricing]" placeholder="Pricing">
+	<input type="submit" value="Add Product">
+</form>
