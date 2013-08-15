@@ -1,0 +1,21 @@
+<% content_for :title do %>
+	Display all comments
+<% end %>
+<h1>Display All Comments</h1>
+
+<table class="table">
+	<thead>
+		<th>Author</th>
+		<th>Comment</th>
+		<th>Product Name</th>
+	</thead>
+	<tbody>
+<% @comments.each do |comment| %>
+	<tr>
+		<td><%= comment.author %></td>
+		<td><%= comment.content %></td>
+		<td><%= comment.product.name %></td>
+	</tr>
+<% end %>
+	</tbody>
+</table>

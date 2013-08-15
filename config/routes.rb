@@ -1,6 +1,8 @@
 IntermediateToDo::Application.routes.draw do
- resources :products
+  get "comments/index"
 
+ resources :products
+ resources :comments
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

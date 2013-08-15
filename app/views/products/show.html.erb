@@ -20,3 +20,11 @@
 	<%= f.input :category_id, collection: @categories, :default => 1 %>
 	<%= f.button :submit, value: "Edit Product Category" %>
 <% end %>
+
+<%= simple_form_for @comment, url: "/comments" do |f| %>
+	<input type="hidden" name="page" value="show">
+	<input type="hidden" name="comment[product_id]" value="<%= @product.id %>">
+	<%= f.input :author %>
+	<%= f.text_area :content %>
+	<%= f.button :submit, value: "Add Comment" %>
+<% end %>
