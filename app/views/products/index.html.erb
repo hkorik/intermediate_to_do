@@ -8,13 +8,15 @@
 		<th>Name</th>
 		<th>Description</th>
 		<th>Pricing</th>
+		<th>Category</th>
 	</thead>
 	<tbody>
-<%= @products.each do |product| %>
+<% @products.each do |product| %>
 	<tr>
 		<td><%= product.name %></td>		
 		<td><%= product.description %></td>
 		<td><%= product.pricing %></td>
+		<td><%= product.category_id %></td>
 	</tr>
 <% end %>
 	</tbody>

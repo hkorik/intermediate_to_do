@@ -6,8 +6,18 @@
 	<% flash[:error_messages].each do |error| %>
 		<p><%= error %></p>
 	<% end %>
+<% else %>
+	<p><%= flash[:success_message] %></p>
 <% end %>
-<form action="/products" method="post">
+
+<%= simple_form_for @product do |f| %>
+	<%= f.input :name %>
+	<%= f.input :description %>
+	<%= f.input :pricing %>
+	<%= f.input :category_id, collection: @categories, :default => 1 %>
+	<%= f.button :submit, value: "Add Product" %>
+<% end %>
+<!-- <form action="/products" method="post">
 	<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
   <label for="name">Name</label>
   <input type="text" id="name" name="product[name]" placeholder="Name" />
@@ -16,4 +26,4 @@
   <label for="pricing">Pricing</label>
   <input type="text" id="pricing" name="product[pricing]" placeholder="Pricing">
 	<input type="submit" value="Add Product">
-</form>
+</form> -->

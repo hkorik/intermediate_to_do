@@ -1,2 +1,22 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<% content_for :title do %>
+	Display product <%= @product.id %>
+<% end %>
+<h1>Display product <%= @product.id %></h1>
+
+<% if flash[:error_messages] %>
+	<% flash[:error_messages].each do |error| %>
+		<p><%= error %></p>
+	<% end %>
+<% else %>
+	<p><%= flash[:success_message] %></p>
+<% end %>
+
+<p><%= @product.name %></p>
+<p><%= @product.description %></p>
+<p><%= @product.pricing %></p>
+
+<%= simple_form_for @product do |f| %>
+	<input type="hidden" name="page" value="show">
+	<%= f.input :category_id, collection: @categories, :default => 1 %>
+	<%= f.button :submit, value: "Edit Product Category" %>
+<% end %>

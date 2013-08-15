@@ -1,4 +1,20 @@
 <% content_for :title do %>
-	Edit Products
+	Edit Product
 <% end %>
-<h1>Edit Products</h1>
+<h1>Edit Product <%= @product.id %></h1>
+<% if flash[:error_messages] %>
+	<% flash[:error_messages].each do |error| %>
+		<p><%= error %></p>
+	<% end %>
+<% else %>
+	<p><%= flash[:success_message] %></p>
+<% end %>
+
+<%= simple_form_for @product do |f| %>
+	<input type="hidden" name="page" value="edit">
+	<%= f.input :name %>
+	<%= f.input :description %>
+	<%= f.input :pricing %>
+	<%= f.input :category_id, collection: @categories, :default => 1 %>
+	<%= f.button :submit, value: "Edit Product" %>
+<% end %>
